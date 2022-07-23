@@ -1,0 +1,27 @@
+{
+  "name": "rpg4bots",
+  "version": "1.0.0",
+  "description": "an RPG not meant to be played by people, but bots instead",
+  "main": "server/index.ts",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinsandow/rpg4bots.git"
+  },
+  "keywords": [
+    "rpg",
+    "socket.io",
+    "bots",
+    "ai"
+  ],
+  "author": "Kevin Sandow",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kevinsandow/rpg4bots/issues"
+  },
+  "homepage": "https://github.com/kevinsandow/rpg4bots#readme"
+}
