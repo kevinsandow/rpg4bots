@@ -8,6 +8,6 @@
     "moduleResolution": "node",
     "sourceMap": false,
     "strict": true,
-    "outDir": "dist",
+    "outDir": "dist"
   }
 }
