@@ -3,14 +3,18 @@
   "version": "1.0.0",
   "description": "an RPG not meant to be played by people, but bots instead",
   "main": "server/index.ts",
-  "dependencies": {},
-  "devDependencies": {},
   "scripts": {
+    "start": "ts-node server/index.ts",
+    "dev": "ts-node-dev server/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kevinsandow/rpg4bots.git"
+  },
+  "homepage": "https://github.com/kevinsandow/rpg4bots#readme",
+  "bugs": {
+    "url": "https://github.com/kevinsandow/rpg4bots/issues"
   },
   "keywords": [
     "rpg",
@@ -20,8 +24,12 @@
   ],
   "author": "Kevin Sandow",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kevinsandow/rpg4bots/issues"
+  "dependencies": {
+    "socket.io": "^4.5.1",
+    "socket.io-client": "^4.5.1",
+    "ts-node": "^10.9.1"
   },
-  "homepage": "https://github.com/kevinsandow/rpg4bots#readme"
+  "devDependencies": {
+    "ts-node-dev": "^2.0.0"
+  }
 }
