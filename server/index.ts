@@ -10,7 +10,7 @@ import {
 import { port } from './env'
 import { parseToken, validateCredentials } from './aurh'
 import logger from './logger'
-import { getCharacterList } from './characters'
+import { getCharacterList } from './data/characters'
 
 const server = new Server<
   ClientToServerEvents,

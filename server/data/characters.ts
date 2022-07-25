@@ -1,6 +1,6 @@
-import { CharacterList } from '../shared/socket'
+import { CharacterList } from '../../shared/socket'
 
-import users, { User } from './data/users'
+import users, { User } from './users'
 
 // eslint-disable-next-line import/prefer-default-export
 export async function getCharacterList(
