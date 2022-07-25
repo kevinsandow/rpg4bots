@@ -10,6 +10,7 @@ import {
 import { port } from './env'
 import { parseToken, validateCredentials } from './aurh'
 import logger from './logger'
+import { getCharacterList } from './characters'
 
 const server = new Server<
   ClientToServerEvents,
@@ -37,20 +38,21 @@ server.use((socket, next) => {
 server.on('connection', (socket) => {
   logger.debug(socket, `New connection from ${socket.handshake.address}`)
 
-  if (socket.data.username) {
-    logger.log(socket, `User came online`)
-  }
-
   socket.on('disconnect', () => {
-    if (socket.data.username) {
-      logger.log(socket, `User went offline`)
-    }
-
     logger.debug(socket, `Connection closed`)
   })
 
   socket.on('ping', (callback) => {
     callback()
+  })
+
+  socket.on('characterList', (cb) => {
+    getCharacterList(socket.data.username || '')
+      .then((data) => cb(data))
+      .catch((e) => {
+        logger.error(socket, `Retrieving character list failed: ${e.message}`)
+        cb([])
+      })
   })
 })
 

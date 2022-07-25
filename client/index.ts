@@ -16,6 +16,9 @@ const start = Date.now()
 socket.emit('ping', () => {
   // eslint-disable-next-line no-console
   console.log(`Ping: ${Date.now() - start}ms`)
+})
 
-  socket.close()
+socket.emit('characterList', (characters) => {
+  // eslint-disable-next-line no-console
+  console.debug(characters)
 })
