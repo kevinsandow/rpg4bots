@@ -14,6 +14,7 @@ const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(uri, {
 const start = Date.now()
 
 socket.emit('ping', () => {
+  // eslint-disable-next-line no-console
   console.log(`Ping: ${Date.now() - start}ms`)
 
   socket.close()

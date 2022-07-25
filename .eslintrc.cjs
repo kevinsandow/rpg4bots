@@ -27,5 +27,6 @@ module.exports = {
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],
     '@typescript-eslint/no-floating-promises': 'error',
+    '@typescript-eslint/no-explicit-any': [1, { ignoreRestArgs: true }],
   },
 }

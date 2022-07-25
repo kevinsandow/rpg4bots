@@ -9,6 +9,7 @@ import {
 
 import { port } from './env'
 import { parseToken, validateCredentials } from './aurh'
+import logger from './logger'
 
 const server = new Server<
   ClientToServerEvents,
@@ -21,8 +22,9 @@ server.use((socket, next) => {
   const credentials = parseToken(socket.handshake.auth?.token || '')
 
   if (!validateCredentials(credentials)) {
-    console.debug(
-      `[${socket.id}] Invalid credentials for user "${credentials.username}" from ${socket.handshake.address}`,
+    logger.debug(
+      socket,
+      `Invalid credentials for user "${credentials.username}" from ${socket.handshake.address}`,
     )
     next(new Error('Invalid credentials'))
     return
@@ -33,20 +35,18 @@ server.use((socket, next) => {
 })
 
 server.on('connection', (socket) => {
-  console.debug(
-    `[${socket.id}] New connection from ${socket.handshake.address}`,
-  )
+  logger.debug(socket, `New connection from ${socket.handshake.address}`)
 
   if (socket.data.username) {
-    console.log(`[${socket.id}] User "${socket.data.username}" came online`)
+    logger.log(socket, `User came online`)
   }
 
   socket.on('disconnect', () => {
     if (socket.data.username) {
-      console.log(`[${socket.id}] User "${socket.data.username}" went offline`)
+      logger.log(socket, `User went offline`)
     }
 
-    console.debug(`[${socket.id}] Connection closed`)
+    logger.debug(socket, `Connection closed`)
   })
 
   socket.on('ping', (callback) => {
