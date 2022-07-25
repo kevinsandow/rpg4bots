@@ -2,9 +2,14 @@ import { io, Socket } from 'socket.io-client'
 
 import { ClientToServerEvents, ServerToClientEvents } from '../shared/socket'
 
-const uri = process.env?.SERVER_URI || 'http://localhost:3000'
+import { uri, username, password } from './env'
+import { generateToken } from './auth'
 
-const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(uri)
+const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(uri, {
+  auth: {
+    token: generateToken(username, password),
+  },
+})
 
 const start = Date.now()
 

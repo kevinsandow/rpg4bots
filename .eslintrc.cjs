@@ -22,6 +22,7 @@ module.exports = {
     },
   },
   rules: {
+    'no-param-reassign': [2, { props: false }],
     'import/extensions': ['error', { ts: 'never', ignorePackages: true }],
     'no-shadow': 'off',
     '@typescript-eslint/no-shadow': ['error'],
