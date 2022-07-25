@@ -11,7 +11,13 @@ const socket: ClientSocket = io(uri, {
   },
 })
 
-new Ping(socket).start()
+const ping = new Ping(socket)
+ping.start()
+
+setInterval(() => {
+  // eslint-disable-next-line no-console
+  console.debug(`Ping: ${ping.average}ms ±${ping.delta}ms`)
+}, 60000)
 
 socket.emit('characterList', (characters) => {
   // eslint-disable-next-line no-console
